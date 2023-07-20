@@ -1,3 +1,33 @@
-﻿@{
-    ViewBag.Title = "Home Page";
+﻿@model Winnie_Learning_Programme.Models.CoursesViewModel
+@{
+    ViewBag.Title = "Random";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@if (Model.Courses.Count > 0)
+{
+    foreach (var course in Model.Courses)
+    {
+        if (!string.IsNullOrEmpty(course.Name))
+        {
+            <h1>Course Title - @course.Name</h1>
+            <ul>
+                @if (Model.Students.Count > 0)
+                {
+                    @foreach (var student in Model.Students)
+                    {
+                        <li>
+                            <h3>Name : @student.StudentName</h3>
+                            <p>Major : @student.Major</p>
+                            <p>Address: @student.Address</p>
+                        </li>
+                    }
+                }
+
+            </ul>
+        }
+        else
+        {
+            <h1>There has no available course.</h1>
+        }
+    }
 }

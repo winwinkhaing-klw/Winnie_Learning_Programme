@@ -3,20 +3,44 @@
 {
     using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
     {
-    @Html.AntiForgeryToken()
-
-    <ul class="nav navbar-nav navbar-right">
-        <li>
-            @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+        @Html.AntiForgeryToken()
+        <li class="btn-group nav">
+            <button type="button" class="btn navbar-btn" style="background-color:forestgreen">@User.Identity.Name</button>
+            <button type="button" class="btn navbar-btn dropdown-toggle" data-toggle="dropdown">
+                <span class="caret"></span>
+                <span class="sr-only">Toggle Dropdown</span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+                <li><a href="#">My Account</a></li>
+                <li><a href="#">View Profile</a></li>
+                <li><a href="#">Edit Profile</a></li>
+                <li><a href="#">Change Password</a></li>
+                <li><a href="#">Setting</a></li>
+                <li><a href="#">Logout</a></li>
+            </ul>
         </li>
-        <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
-    </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li>
+                @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+            </li>
+            <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+        </ul>
     }
 }
 else
 {
     <ul class="nav navbar-nav navbar-right">
-        <li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
-        <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+        <li>
+            <a href="@Url.Action("Register", "Account")">
+                <span class="glyphicon glyphicon-registration-mark"></span>
+                Register
+            </a>
+        </li>
+        <li>
+            <a href="@Url.Action("Login", "Account")">
+                <span class="glyphicon glyphicon-log-in"></span>
+                Login
+            </a>
+        </li>
     </ul>
 }

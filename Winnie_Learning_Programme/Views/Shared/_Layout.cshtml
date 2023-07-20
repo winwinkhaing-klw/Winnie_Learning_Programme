@@ -5,19 +5,22 @@
     @Styles.Render("~/Content/css")
     @Styles.Render("~/Content/fontawesome")
     @Scripts.Render("~/bundles/modernizr")
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
+    <link rel="stylesheet" href="~/css/bootstrap.css" />
     <script src="~/Scripts/custom.js"></script>
-    <link rel="stylesheet" href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="~/Content/Site.css" type="text/css">
-    <link rel="stylesheet" href="~/Content/bootstrap-grid.min.css" type="text/css">
-    <link rel="stylesheet" href="~/Content/animations.css" type="text/css">
-    <link rel="stylesheet" href="~/Content/perfect-scrollbar.css" type="text/css">
-    <link rel="stylesheet" href="~/Content/owl.carousel.css" type="text/css">
-    <link rel="stylesheet" href="~/Content/magnific-popup.css" type="text/css">
-    <link rel="stylesheet" href="~/Content/main.css" type="text/css">
+    
+    <title>My Learning Program</title>
 </head>
-    @RenderBody();
-    @RenderSection("scripts", required: false)
+@Html.Partial("_NavBar")
+
+@RenderBody()
+<hr />
+<footer>
+    <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+</footer>
+
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+
+@RenderSection("scripts", required: false)
 </html>

@@ -1,9 +1,10 @@
-﻿using System;
+﻿using Microsoft.Graph.Ediscovery;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using Winnie_Learning_Programme.Models;
+
 
 namespace Winnie_Learning_Programme.Controllers
 {
@@ -11,8 +12,40 @@ namespace Winnie_Learning_Programme.Controllers
     {
         public ActionResult Index()
         {
+            List<Courses> course = new List<Courses>()
+            {
+                new Courses
+                {
+                    Id = 1,
+                    Name = "Programming",
+                    Description = "Programming",
+                    Url = ""
+                },
+                new Courses
+                {
+                    Id = 2,
+                    Name = "Database",
+                    Description = "Database",
+                    Url = ""
+                },
+                new Courses
+                {
+                    Id = 3,
+                    Name = "Artificial Intelligence",
+                    Description = "Artificial Intelligence",
+                    Url = ""
+                },
+                new Courses
+                {
+                    Id = 4,
+                    Name = "Networking",
+                    Description = "Networking",
+                    Url = ""
+                }
+        };
             return View();
         }
+
         public ActionResult Portfolio()
         {
             UserViewModel viewModel = new UserViewModel();
@@ -134,7 +167,7 @@ namespace Winnie_Learning_Programme.Controllers
                     Url = "https://www.udemy.com/certificate/UC-697e616d-5043-40ad-8ffe-cdc305ac3c10/",
                     Cert = ""
                 }
-                
+
             };
             var skills = new List<Skills>()
             {
@@ -234,7 +267,7 @@ namespace Winnie_Learning_Programme.Controllers
                     SkillName = "Automation Test",
                     SkillCategory = "Technology",
                     Rate = 90
-                }, 
+                },
                 new Skills
                 {
                     SkillName = "PHP",
