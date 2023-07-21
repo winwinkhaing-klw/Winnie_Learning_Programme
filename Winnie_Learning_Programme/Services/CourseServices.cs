@@ -44,5 +44,17 @@ namespace Winnie_Learning_Programme.Services
         };
             return course;
         }
+
+        public static Courses GetCourseById(int id)
+        {
+            Courses course = GetCourses().Where(x => x.Id == id).FirstOrDefault();
+            return course;
+        }
+
+        public static Courses GetCourseByStudentId(int id)
+        {
+            Courses course = GetCourses().Where(x => x.StudentId == id).FirstOrDefault();
+            return course;
+        }
     }
 }

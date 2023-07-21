@@ -9,6 +9,10 @@ namespace Winnie_Learning_Programme.Models
     {
         public List<Students> Students { get; set; }
 
+        public Students Student { get; set; }
+
+        public Courses Course { get; set; }
+
         public List<Courses> Courses { get; set; }
     }
 }

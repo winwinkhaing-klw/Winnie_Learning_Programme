@@ -8,6 +8,7 @@ namespace Winnie_Learning_Programme.Models
     public class Students
     {
         public int StudentId { get; set; }
+        public int CourseId { get; set; }
         public string StudentName { get; set; }
         public string Address { get; set; }
         public int Age { get; set; }

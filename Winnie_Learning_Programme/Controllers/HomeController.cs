@@ -12,37 +12,7 @@ namespace Winnie_Learning_Programme.Controllers
     {
         public ActionResult Index()
         {
-            List<Courses> course = new List<Courses>()
-            {
-                new Courses
-                {
-                    Id = 1,
-                    Name = "Programming",
-                    Description = "Programming",
-                    Url = ""
-                },
-                new Courses
-                {
-                    Id = 2,
-                    Name = "Database",
-                    Description = "Database",
-                    Url = ""
-                },
-                new Courses
-                {
-                    Id = 3,
-                    Name = "Artificial Intelligence",
-                    Description = "Artificial Intelligence",
-                    Url = ""
-                },
-                new Courses
-                {
-                    Id = 4,
-                    Name = "Networking",
-                    Description = "Networking",
-                    Url = ""
-                }
-        };
+           
             return View();
         }
 
@@ -303,7 +273,8 @@ namespace Winnie_Learning_Programme.Controllers
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
-
+            var startdate = new DateTime(2023,05,03);
+            var date = DateTime.Now - startdate;
             return View();
         }
 

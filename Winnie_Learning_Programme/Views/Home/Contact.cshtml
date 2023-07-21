@@ -2,103 +2,85 @@
 @{
     ViewBag.Title = "Contact";
 }
-<!-- Contact Subpage -->
-<section data-id="contact" class="animated-section">
-    <div class="page-title">
-        <h2>Contact</h2>
-    </div>
-
-    <div class="section-content">
-
-        <div class="row">
-            <!-- Contact Info -->
-            <div class="col-xs-12 col-sm-4">
-                <div class="lm-info-block gray-default">
-                    <i class="lnr lnr-map-marker"></i>
-                    <h4>Yangon, Myanmar</h4>
-                    <span class="lm-info-block-value"></span>
-                    <span class="lm-info-block-text"></span>
-                </div>
-
-                <div class="lm-info-block gray-default">
-                    <i class="lnr lnr-phone-handset"></i>
-                    <h4>+95 9252587215</h4>
-                    <span class="lm-info-block-value"></span>
-                    <span class="lm-info-block-text"></span>
-                </div>
-
-                <div class="lm-info-block gray-default">
-                    <i class="lnr lnr-envelope"></i>
-                    <h4><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="dfbeb3baa79fbaa7beb2afb3baf1bcb0b2">winwinkhaing.mm25@gmail.com</a></h4>
-                    <span class="lm-info-block-value"></span>
-                    <span class="lm-info-block-text"></span>
-                </div>
-
-                <div class="lm-info-block gray-default">
-                    <i class="lnr lnr-checkmark-circle"></i>
-                    <h4>Freelance Available</h4>
-                    <span class="lm-info-block-value"></span>
-                    <span class="lm-info-block-text"></span>
-                </div>
-
-
-            </div>
-            <!-- End of Contact Info -->
-            <!-- Contact Form -->
-            <div class="col-xs-12 col-sm-8">
-                <div id="map" class="map">
-                    <div class="lmpixels-map">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15277.662317246144!2d96.12386761177443!3d16.805727235107213!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30c1eb46fd85e9eb%3A0xf8fce784abe0fff6!2sSanchaung%20Township%2C%20Yangon!5e0!3m2!1sen!2smm!4v1689568221884!5m2!1sen!2smm" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+<!DOCTYPE html>
+<html lang="en">
+<body>
+    <!-- ***** Main Banner Area Start ***** -->
+    <div class="page-heading about-page-heading" id="top">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="inner-content">
+                        <h2>Contact Us</h2>
+                        <span>Please feel free to contact us.</span>
                     </div>
                 </div>
-                <div class="block-title">
-                    <h3>How Can I <span>Help You?</span></h3>
+            </div>
+        </div>
+    </div>
+    <!-- ***** Main Banner Area End ***** -->
+    <!-- ***** Contact Area Starts ***** -->
+    <div class="contact-us">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div id="map">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d30555.32806686409!2d96.11356757224495!3d16.80570592504415!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30c1eb46fd85e9eb%3A0xf8fce784abe0fff6!2sSanchaung%20Township%2C%20Yangon!5e0!3m2!1sen!2smm!4v1689925789799!5m2!1sen!2smm" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
                 </div>
-
-                <form id="contact_form" class="contact-form" action="contact_form/contact_form.php" method="post">
-
-                    <div class="messages"></div>
-
-                    <div class="controls two-columns">
-                        <div class="fields clearfix">
-                            <div class="left-column">
-                                <div class="form-group form-group-with-icon">
-                                    <input id="form_name" type="text" name="Full Name" class="form-control" placeholder="Full Name" required="required" data-error="Name is required.">
-                                    <div class="form-control-border"></div>
-                                    <div class="help-block with-errors"></div>
-                                </div>
-
-                                <div class="form-group form-group-with-icon">
-                                    <input id="form_email" type="email" name="email" class="form-control" placeholder="Email" required="required" data-error="Valid email is required.">
-                                    <div class="form-control-border"></div>
-                                    <div class="help-block with-errors"></div>
-                                </div>
-
-                                <div class="form-group form-group-with-icon">
-                                    <input id="form_subject" type="text" name="subject" class="form-control" placeholder="Subject" required="required" data-error="Subject is required.">
-                                    <div class="form-control-border"></div>
-                                    <div class="help-block with-errors"></div>
-                                </div>
-                                <div class="form-group form-group-with-icon">
-                                    <textarea id="form_message" name="message" class="form-control" placeholder="Message" rows="7" required="required" data-error="Please, leave me a message."></textarea>
-                                    <div class="form-control-border"></div>
-                                    <div class="help-block with-errors"></div>
-                                </div>
+                <div class="col-lg-12">
+                    <div class="section-heading">
+                        <h2>Say Hello. Don't Be Shy!</h2>
+                        <span>We will provide better services for you.</span>
+                    </div>
+                    <form id="contact" action="" method="post">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <fieldset>
+                                    <input name="name" type="text" id="name" placeholder="Your name" required="">
+                                </fieldset>
                             </div>
-                            <div class="right-column">
-
+                            <div class="col-lg-6">
+                                <fieldset>
+                                    <input name="email" type="text" id="email" placeholder="Your email" required="">
+                                </fieldset>
+                            </div>
+                            <div class="col-lg-12">
+                                <fieldset>
+                                    <textarea name="message" rows="6" id="message" placeholder="Your message" required=""></textarea>
+                                </fieldset>
+                            </div>
+                            <div class="col-lg-12">
+                                <fieldset>
+                                    <button type="submit" id="form-submit" class="main-dark-button"><i class="fa fa-paper-plane"></i></button>
                             </div>
                         </div>
-
-                        <div class="g-recaptcha" data-sitekey="6LdqmCAUAAAAAMMNEZvn6g4W5e0or2sZmAVpxVqI" data-theme="dark"></div>
-
-                        <input type="submit" class="button btn-send" value="Send message">
-                    </div>
-                </form>
+                    </form>
+                </div>
             </div>
-            <!-- End of Contact Form -->
         </div>
-
     </div>
-</section>
-<!-- End of Contact Subpage -->
+    <!-- ***** Contact Area Ends ***** -->
+    
+    
+    <script>
+
+        $(function() {
+            var selectedClass = "";
+            $("p").click(function(){
+            selectedClass = $(this).attr("data-rel");
+            $("#portfolio").fadeTo(50, 0.1);
+                $("#portfolio div").not("."+selectedClass).fadeOut();
+            setTimeout(function() {
+              $("."+selectedClass).fadeIn();
+              $("#portfolio").fadeTo(50, 1);
+            }, 500);
+
+            });
+        });
+
+    </script>
+
+</body>
+
+</html>

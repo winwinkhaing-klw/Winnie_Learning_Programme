@@ -11,7 +11,7 @@ namespace Winnie_Learning_Programme.Controllers
     public class CoursesController : Controller
     {
         // GET: Movies/Random
-        public ActionResult Index()
+        public ActionResult Courses()
         {
             var course = new Courses()
             {
@@ -22,47 +22,15 @@ namespace Winnie_Learning_Programme.Controllers
             return View(viewModel);
         }
 
-        public ActionResult Detail(int id)
+        public ActionResult CourseDetail(int id)
         {
-            List<Students> students = new List<Students>()
+            var viewModel = new CoursesViewModel();
+            Students student = StudentServices.GetStudentById(id);
+            if(student != null)
             {
-                new Students  {
-                    StudentId = 1,
-                    StudentName = "Winnie",
-                    Age = 26,
-                    Address = "Kalaw",
-                    Major = "CS"
-                },
-                new Students  {
-                    StudentId = 2,
-                    StudentName = "PPM",
-                    Age = 26,
-                    Address = "Kalaw",
-                    Major = "CS"
-                },
-                new Students  {
-                    StudentId = 3,
-                    StudentName = "Clari",
-                    Age = 26,
-                    Address = "Yangon",
-                    Major = "CS"
-                },
-                new Students  {
-                    StudentId = 4,
-                    StudentName = "Bob",
-                    Age = 26,
-                    Address = "Taunggyi",
-                    Major = "CS"
-                },
-                new Students  {
-                    StudentId = 5,
-                    StudentName = "Joe",
-                    Age = 26,
-                    Address = "Mdy",
-                    Major = "CS"
-                },
-            };
-            return View();
+                viewModel.Student = student;
+            }
+            return View(viewModel);
         }
     }
 }

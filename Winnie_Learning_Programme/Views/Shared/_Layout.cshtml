@@ -6,21 +6,50 @@
     @Styles.Render("~/Content/fontawesome")
     @Scripts.Render("~/bundles/modernizr")
     <link rel="stylesheet" href="~/css/bootstrap.css" />
-    <script src="~/Scripts/custom.js"></script>
-    
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="~/Content/assets/css/bootstrap.min.css">
+
+    <link rel="stylesheet" type="text/css" href="~/Content/assets/css/font-awesome.css">
+
+    <link rel="stylesheet" href="~/Content/assets/css/main.css">
+
+    <link rel="stylesheet" href="~/Content/assets/css/owl-carousel.css">
+
+    <link rel="stylesheet" href="~/Content/assets/css/lightbox.css">
     <title>My Learning Program</title>
 </head>
 @Html.Partial("_NavBar")
 
 @RenderBody()
-<hr />
-<footer>
-    <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-</footer>
-
+@Html.Partial("_footer")
 
 @Scripts.Render("~/bundles/jquery")
 @Scripts.Render("~/bundles/bootstrap")
 
+
 @RenderSection("scripts", required: false)
+
+
 </html>
+
+<!-- jQuery -->
+<script src="~/Content/assets/js/jquery-2.1.0.min.js"></script>
+
+<!-- Bootstrap -->
+<script src="~/Content/assets/js/popper.js"></script>
+<script src="~/Content/assets/js/bootstrap.min.js"></script>
+
+<!-- Plugins -->
+<script src="~/Content/assets/js/owl-carousel.js"></script>
+<script src="~/Content/assets/js/accordions.js"></script>
+<script src="~/Content/assets/js/datepicker.js"></script>
+<script src="~/Content/assets/js/scrollreveal.min.js"></script>
+<script src="~/Content/assets/js/waypoints.min.js"></script>
+<script src="~/Content/assets/js/jquery.counterup.min.js"></script>
+<script src="~/Content/assets/js/imgfix.min.js"></script>
+<script src="~/Content/assets/js/slick.js"></script>
+<script src="~/Content/assets/js/lightbox.js"></script>
+<script src="~/Content/assets/js/isotope.js"></script>
+
+<!-- Global Init -->
+<script src="~/Content/assets/js/custom.js"></script>
