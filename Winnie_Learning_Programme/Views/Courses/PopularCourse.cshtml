@@ -1,6 +1,6 @@
 ﻿@model Winnie_Learning_Programme.Models.CoursesViewModel
 @{
-    ViewBag.Title = "Courses";
+    ViewBag.Title = "PopularCourse";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -11,8 +11,8 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="inner-content">
-                        <h2>All Courses</h2>
-                        <span>Start Your Learning Jonery with our platform.</span>
+                        <h2>Popular Courses</h2>
+                        <span>Start Your Learning Jonery with popular courses.</span>
                     </div>
                 </div>
             </div>
@@ -23,8 +23,8 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="section-heading">
-                        <h2>Our Latest Courses</h2>
-                        <span>Check out all of our courses.</span>
+                        <h2>Our Popular Courses</h2>
+                        <span>Check out all of our popular courses.</span>
                     </div>
                 </div>
             </div>
@@ -35,37 +35,37 @@
                 {
                     foreach (var course in Model.Courses)
                     {
-                    <div class="col-lg-4">
+                        <div class="col-lg-4">
 
-                        <div class="item">
-                            
-                            <div class="thumb">
-                                <div class="hover-content">
-                                    <ul>
-                                        <li><a href="single-product.html"><i class="fa fa-eye"></i></a></li>
-                                        <li><a href="single-product.html"><i class="fa fa-star"></i></a></li>
-                                        <li><a href="single-product.html"><i class="fa fa-shopping-cart"></i></a></li>
+                            <div class="item">
+
+                                <div class="thumb">
+                                    <div class="hover-content">
+                                        <ul>
+                                            <li><a href="single-product.html"><i class="fa fa-eye"></i></a></li>
+                                            <li><a href="single-product.html"><i class="fa fa-star"></i></a></li>
+                                            <li><a href="single-product.html"><i class="fa fa-shopping-cart"></i></a></li>
+                                        </ul>
+                                    </div>
+                                    <img src="@course.Url" alt="">
+                                </div>
+                                <div class="down-content">
+                                    <h4>@course.Name</h4>
+                                    <span>$@course.Price.00</span>
+                                    <ul class="stars">
+                                        @for (int i = 0; i < 5; i++)
+                                        {
+                                            <li><i class="fa fa-star"></i></li>
+                                        }
+
                                     </ul>
                                 </div>
-                                <img src="@course.Url" alt="">
-                            </div>
-                            <div class="down-content">
-                                <h4>@course.Name</h4>
-                                <span>$@course.Price.00</span>
-                                <ul class="stars">
-                                    @for (int i = 0; i < 5; i++)
-                                    {
-                                        <li><i class="fa fa-star"></i></li>
-                                    }
 
-                                </ul>
                             </div>
-
                         </div>
-                    </div>
                     }
                 }
-                </div>
+            </div>
             <div class="col-lg-12">
                 <div class="pagination">
                     <ul>
@@ -92,4 +92,6 @@
 </body>
 
 </html>
+
+
 

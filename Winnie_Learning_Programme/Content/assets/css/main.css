@@ -300,7 +300,7 @@ header
   -moz-transition: all 0.3s ease 0s;
   -o-transition: all 0.3s ease 0s;
   transition: all 0.3s ease 0s;
-  height: 40px;
+  height: 60px!important;
   line-height: 40px;
   border: transparent;
   letter-spacing: 1px;

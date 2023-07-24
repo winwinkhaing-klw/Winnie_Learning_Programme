@@ -1,5 +1,4 @@
-﻿<!DOCTYPE html>
-<html>
+﻿<html>
 <head>
 
     @Styles.Render("~/Content/css")
@@ -18,7 +17,10 @@
     <link rel="stylesheet" href="~/Content/assets/css/lightbox.css">
     <title>My Learning Program</title>
 </head>
-@Html.Partial("_NavBar")
+@if (!Request.Url.ToString().Contains("Portfolio"))
+{
+    @Html.Partial("_NavBar")
+}
 
 @RenderBody()
 @Html.Partial("_footer")

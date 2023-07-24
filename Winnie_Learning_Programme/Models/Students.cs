@@ -13,5 +13,6 @@ namespace Winnie_Learning_Programme.Models
         public string Address { get; set; }
         public int Age { get; set; }
         public string Major { get; set; }
+        public string ImgUrl { get; set; }
     }
 }

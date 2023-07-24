@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using Winnie_Learning_Programme.Models;
-
+using Winnie_Learning_Programme.Services;
 
 namespace Winnie_Learning_Programme.Controllers
 {
@@ -12,8 +12,18 @@ namespace Winnie_Learning_Programme.Controllers
     {
         public ActionResult Index()
         {
-           
-            return View();
+            CoursesViewModel viewModel = new CoursesViewModel();
+
+            if (CourseServices.GetCourses().Count > 0)
+            {
+                viewModel.Courses = CourseServices.GetCourses().OrderBy(x => x.Name).ToList();
+            }
+
+            if (StudentServices.GetStudents().Count > 0)
+            {
+                viewModel.Students = StudentServices.GetStudents().OrderBy(x => x.StudentId).ToList();
+            }
+            return View(viewModel);
         }
 
         public ActionResult Portfolio()

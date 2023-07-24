@@ -13,12 +13,28 @@ namespace Winnie_Learning_Programme.Controllers
         // GET: Movies/Random
         public ActionResult Courses()
         {
-            var course = new Courses()
-            {
-                Name = "Programming"
-            };
             var viewModel = new CoursesViewModel();
             viewModel.Courses = CourseServices.GetCourses(); 
+            return View(viewModel);
+        }
+
+        public ActionResult PopularCourse()
+        {
+            var viewModel = new CoursesViewModel();
+            if(CourseServices.GetCourses().Count > 0 && CourseServices.GetCourses().Any(x=>x.Category == Constant.Category.Pop))
+            {
+                viewModel.Courses = CourseServices.GetCourses().Where(x => x.Category == Constant.Category.Pop).OrderBy(x=>x.Name).ToList();
+            }
+           
+            return View(viewModel);
+        }
+        public ActionResult YourCourse()
+        {
+            var viewModel = new CoursesViewModel();
+            if (CourseServices.GetCourses().Count > 0 && CourseServices.GetCourses().Any(x => x.Category == Constant.Category.Mine))
+            {
+                viewModel.Courses = CourseServices.GetCourses().Where(x => x.Category == Constant.Category.Mine).OrderBy(x => x.Name).ToList();
+            }
             return View(viewModel);
         }
 

@@ -206,6 +206,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Constant.cs" />
     <Compile Include="Models\Courses.cs" />
     <Compile Include="Models\CoursesViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -240,6 +241,16 @@
     <Content Include="Content\assets\images\couple1.jpg" />
     <Content Include="Content\assets\images\couplebg.jpg" />
     <Content Include="Content\assets\images\couplebg1.jpg" />
+    <Content Include="Content\assets\images\course1.jpg" />
+    <Content Include="Content\assets\images\course10.jpg" />
+    <Content Include="Content\assets\images\course2.png" />
+    <Content Include="Content\assets\images\course3.png" />
+    <Content Include="Content\assets\images\course4.png" />
+    <Content Include="Content\assets\images\course5.png" />
+    <Content Include="Content\assets\images\course6.jpg" />
+    <Content Include="Content\assets\images\course7.png" />
+    <Content Include="Content\assets\images\course8.jpg" />
+    <Content Include="Content\assets\images\course9.jpg" />
     <Content Include="Content\assets\images\explore-image-01.jpg" />
     <Content Include="Content\assets\images\explore-image-02.jpg" />
     <Content Include="Content\assets\images\instagram-01.jpg" />
@@ -251,6 +262,8 @@
     <Content Include="Content\assets\images\kid-01.jpg" />
     <Content Include="Content\assets\images\kid-02.jpg" />
     <Content Include="Content\assets\images\kid-03.jpg" />
+    <Content Include="Content\assets\images\latest.jpg" />
+    <Content Include="Content\assets\images\latest1.jpg" />
     <Content Include="Content\assets\images\left-banner-image.jpg" />
     <Content Include="Content\assets\images\loading.gif" />
     <Content Include="Content\assets\images\logo.jpg" />
@@ -2479,6 +2492,8 @@
     <Content Include="Views\Courses\CourseDetail.cshtml" />
     <Content Include="Views\Courses\Courses.cshtml" />
     <Content Include="Views\Shared\_footer.cshtml" />
+    <Content Include="Views\Courses\PopularCourse.cshtml" />
+    <Content Include="Views\Courses\YourCourse.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

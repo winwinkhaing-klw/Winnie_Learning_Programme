@@ -1,0 +1,152 @@
+﻿@model Winnie_Learning_Programme.Models.CoursesViewModel
+@{
+    ViewBag.Title = "YourCourse";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<html lang="en">
+<body>
+    <div class="page-heading" id="top">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="inner-content">
+                        <h2>Your Courses</h2>
+                        <span>Continue Your Learning Jonery to imporve your skill.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    @if (Model.Courses.Count > 0)
+    {
+        <section class="section" id="products">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="section-heading">
+                            <h2>Your Courses</h2>
+                            <span>Check out all of your courses.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    @if (Model.Courses.Count > 0)
+                    {
+                        foreach (var course in Model.Courses)
+                        {
+                            <div class="col-lg-4">
+
+                                <div class="item">
+
+                                    <div class="thumb">
+                                        <div class="hover-content">
+                                            <ul>
+                                                <li><a href="single-product.html"><i class="fa fa-eye"></i></a></li>
+                                                <li><a href="single-product.html"><i class="fa fa-star"></i></a></li>
+                                                <li><a href="single-product.html"><i class="fa fa-shopping-cart"></i></a></li>
+                                            </ul>
+                                        </div>
+                                        <img src="@course.Url" alt="">
+                                    </div>
+                                    <div class="down-content">
+                                        <h4>@course.Name</h4>
+                                        <span>$@course.Price.00</span>
+                                        <ul class="stars">
+                                            @for (int i = 0; i < 5; i++)
+                                            {
+                                                <li><i class="fa fa-star"></i></li>
+                                            }
+
+                                        </ul>
+                                    </div>
+
+                                </div>
+                            </div>
+                        }
+                    }
+
+
+                </div>
+                <div class="col-lg-12">
+                    <div class="pagination">
+                        <ul>
+                            <li>
+                                <a href="#">1</a>
+                            </li>
+                            <li class="active">
+                                <a href="#">2</a>
+                            </li>
+                            <li>
+                                <a href="#">3</a>
+                            </li>
+                            <li>
+                                <a href="#">4</a>
+                            </li>
+                            <li>
+                                <a href="#">></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    }
+    else
+    {
+        <h2>There is no your course. Please click on Discover More button to see all courses.</h2>
+        <section class="section" id="explore">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="left-content">
+                            <h2>Explore Our Products</h2>
+                            <span>You are allowed to learn any course as you wish.</span>
+                            <div class="quote">
+                                <i class="fa fa-quote-left"></i><p>We deserve better services as much as we can.</p>
+                            </div>
+                            <div class="main-border-button">
+                                <a href="@Url.Action("Courses","Courses")">Discover More</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="right-content">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="leather">
+                                        <h4>Best Seller</h4>
+                                        <span>Latest Technology</span>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="first-image">
+                                        <img src="~/Content/assets/images/latest.jpg" alt="">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="second-image">
+                                        <img src="~/Content/assets/images/latest1.jpg" alt="">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="types">
+                                        <h4>New Course</h4>
+                                        <span>Take Latest Course</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    }
+
+</body>
+
+</html>
+
+
+

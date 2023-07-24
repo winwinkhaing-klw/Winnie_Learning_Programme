@@ -17,35 +17,40 @@ namespace Winnie_Learning_Programme.Services
                     StudentName = "Winnie",
                     Age = 26,
                     Address = "Kalaw",
-                    Major = "CS"
+                    Major = "CS",
+                    ImgUrl = "/Content/assets/images/stu6.jpg"
                 },
                 new Students  {
                     StudentId = 2,
                     StudentName = "PPM",
                     Age = 26,
                     Address = "Kalaw",
-                    Major = "CS"
+                    Major = "CS",
+                    ImgUrl = "/Content/assets/images/stu2.jpg"
                 },
                 new Students  {
                     StudentId = 3,
                     StudentName = "Clari",
                     Age = 26,
                     Address = "Yangon",
-                    Major = "CS"
+                    Major = "CS",
+                    ImgUrl = "/Content/assets/images/stu3.jpg"
                 },
                 new Students  {
                     StudentId = 4,
                     StudentName = "Bob",
                     Age = 26,
                     Address = "Taunggyi",
-                    Major = "CS"
+                    Major = "CS",
+                    ImgUrl = "/Content/assets/images/stu5.jpg"
                 },
                 new Students  {
                     StudentId = 5,
                     StudentName = "Joe",
                     Age = 26,
                     Address = "Mdy",
-                    Major = "CS"
+                    Major = "CS",
+                    ImgUrl = "/Content/assets/images/stu1.jpg"
                 },
             };
 
