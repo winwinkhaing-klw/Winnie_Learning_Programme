@@ -18,7 +18,22 @@ namespace Winnie_Learning_Programme.Services
                     Age = 26,
                     Address = "Kalaw",
                     Major = "CS",
-                    ImgUrl = "/Content/assets/images/stu6.jpg"
+                    ImgUrl = "/Content/assets/images/stu6.jpg",
+                    Email = "winnie@gmail.com",
+                    Phone = 09777777,
+                    SocialLink = new List<SocialLink>()
+                    {
+                        new SocialLink
+                        {
+                            Name = "facebook",
+                            Url = "https://www.facebook.com/"
+                        },
+                        new SocialLink
+                        {
+                            Name = "github",
+                            Url = "https://www.github.com/"
+                        }
+                    }
                 },
                 new Students  {
                     StudentId = 2,
@@ -26,7 +41,22 @@ namespace Winnie_Learning_Programme.Services
                     Age = 26,
                     Address = "Kalaw",
                     Major = "CS",
-                    ImgUrl = "/Content/assets/images/stu2.jpg"
+                    ImgUrl = "/Content/assets/images/stu2.jpg",
+                    Email = "ppm@gmail.com",
+                    Phone = 09777777,
+                    SocialLink = new List<SocialLink>()
+                    {
+                        new SocialLink
+                        {
+                            Name = "facebook",
+                            Url = "https://www.facebook.com/"
+                        },
+                        new SocialLink
+                        {
+                            Name = "github",
+                            Url = "https://www.github.com/"
+                        }
+                    }
                 },
                 new Students  {
                     StudentId = 3,
@@ -34,7 +64,22 @@ namespace Winnie_Learning_Programme.Services
                     Age = 26,
                     Address = "Yangon",
                     Major = "CS",
-                    ImgUrl = "/Content/assets/images/stu3.jpg"
+                    ImgUrl = "/Content/assets/images/stu3.jpg",
+                    Email = "clari@gmail.com",
+                    Phone = 09777777,
+                    SocialLink = new List<SocialLink>()
+                    {
+                        new SocialLink
+                        {
+                            Name = "facebook",
+                            Url = "https://www.facebook.com/"
+                        },
+                        new SocialLink
+                        {
+                            Name = "github",
+                            Url = "https://www.github.com/"
+                        }
+                    }
                 },
                 new Students  {
                     StudentId = 4,
@@ -42,7 +87,22 @@ namespace Winnie_Learning_Programme.Services
                     Age = 26,
                     Address = "Taunggyi",
                     Major = "CS",
-                    ImgUrl = "/Content/assets/images/stu5.jpg"
+                    ImgUrl = "/Content/assets/images/stu5.jpg",
+                    Email = "bob@gmail.com",
+                    Phone = 09777777,
+                    SocialLink = new List<SocialLink>()
+                    {
+                        new SocialLink
+                        {
+                            Name = "facebook",
+                            Url = "https://www.facebook.com/"
+                        },
+                        new SocialLink
+                        {
+                            Name = "github",
+                            Url = "https://www.github.com/"
+                        }
+                    }
                 },
                 new Students  {
                     StudentId = 5,
@@ -50,13 +110,27 @@ namespace Winnie_Learning_Programme.Services
                     Age = 26,
                     Address = "Mdy",
                     Major = "CS",
-                    ImgUrl = "/Content/assets/images/stu1.jpg"
+                    ImgUrl = "/Content/assets/images/stu1.jpg",
+                    Email = "",
+                    Phone = 09777777,
+                    SocialLink = new List<SocialLink>()
+                    {
+                        new SocialLink
+                        {
+                            Name = "facebook",
+                            Url = "https://www.facebook.com/"
+                        },
+                        new SocialLink
+                        {
+                            Name = "github",
+                            Url = "https://www.github.com/"
+                        }
+                    }
                 },
             };
 
             return students;
         }
-
         public static Students GetStudentById(int Id)
         {
             Students stu = GetStudents().Where(x => x.StudentId == Id).FirstOrDefault();

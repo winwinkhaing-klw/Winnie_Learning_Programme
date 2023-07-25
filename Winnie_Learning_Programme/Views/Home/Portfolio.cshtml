@@ -34,8 +34,8 @@
                         <img src="~/Content/img/avatar.jpg" alt="Winnie">
                     </div>
                     <div class="header-titles">
-                        <h2>@Model.Name</h2>
-                        <h4>@Model.JobTitle</h4>
+                        <h2>@Model.User.Name</h2>
+                        <h4>@Model.User.JobTitle</h4>
                     </div>
                 </div>
 
@@ -117,7 +117,7 @@
                                         <h2>Winnie</h2>
                                         <div class="owl-carousel text-rotation">
                                             <div class="item">
-                                                <div class="sp-subtitle">@Model.JobTitle</div>
+                                                <div class="sp-subtitle">@Model.User.JobTitle</div>
                                             </div>
 
                                             <div class="item">
@@ -141,7 +141,7 @@
                             <!-- Personal Information -->
                             <div class="row">
                                 <div class="col-xs-12 col-sm-7">
-                                    <p>@Model.AboutMe</p>
+                                    <p>@Model.User.AboutMe</p>
                                 </div>
 
                                 <div class="col-xs-12 col-sm-5">
@@ -149,27 +149,27 @@
                                         <ul>
                                             <li>
                                                 <span class="title">Age</span>
-                                                <span class="value">@Model.Age</span>
+                                                <span class="value">@Model.User.Age</span>
                                             </li>
 
                                             <li>
                                                 <span class="title">Nationality</span>
-                                                <span class="value">@Model.Nationality</span>
+                                                <span class="value">@Model.User.Nationality</span>
                                             </li>
 
                                             <li>
                                                 <span class="title">Address</span>
-                                                <span class="value">@Model.Address</span>
+                                                <span class="value">@Model.User.Address</span>
                                             </li>
 
                                             <li>
                                                 <span class="title">Email Address</span>
-                                                <span class="value"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="d5b0b8b4bcb995b0adb4b8a5b9b0fbb6bab8">@Model.Email</a></span>
+                                                <span class="value"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="d5b0b8b4bcb995b0adb4b8a5b9b0fbb6bab8">@Model.User.Email</a></span>
                                             </li>
 
                                             <li>
                                                 <span class="title">Phone Number</span>
-                                                <span class="value">@Model.PhoneNo</span>
+                                                <span class="value">@Model.User.PhoneNo</span>
                                             </li>
                                         </ul>
                                     </div>
@@ -353,50 +353,23 @@
 
                                 <!-- Skills & Certificates -->
                                 <div class="col-xs-12 col-sm-5">
-                                    <!-- Design Skills -->
                                     <div class="block-title">
                                         <h3>Technical <span>Skills</span></h3>
                                     </div>
 
                                     <div class="skills-info skills-second-style">
-                                        <!-- Skill 1 -->
                                         @foreach (var skill in Model.MySkills)
                                         {
-                                            var rate = skill.Rate == 90 ? Model.SkillRate = "skill-1" : "skill-1";
-                                            switch (skill.Rate)
-                                            {
-                                                case 90:
-                                                    Model.SkillRate = "skill-1";
-                                                    break;
-                                                case 65:
-                                                    Model.SkillRate = "skill-2";
-                                                    break;
-                                                case 80:
-                                                    Model.SkillRate = "skill-3";
-                                                    break;
-                                                case 95:
-                                                    Model.SkillRate = "skill-5";
-                                                    break;
-                                                case 85:
-                                                    Model.SkillRate = "skill-6";
-                                                    break;
-                                                case 100:
-                                                    Model.SkillRate = "skill-7";
-                                                    break;
-
-                                            }
                                             <div class="skill clearfix">
                                                 <h4>@skill.SkillName</h4>
                                                 <div class="skill-value">@skill.Rate%</div>
                                             </div>
-                                            <div class="skill-container @Model.SkillRate">
+                                            <div class="skill-container @skill.RateValue">
                                                 <div class="skill-percentage"></div>
                                             </div>
                                         }
 
                                     </div>
-                                    <!-- End of Design Skills -->
-
                                     <div class="white-space-10"></div>
                                     <!-- Knowledges -->
                                     <div class="block-title">
@@ -597,21 +570,21 @@
                                 <div class="col-xs-12 col-sm-4">
                                     <div class="lm-info-block gray-default">
                                         <i class="lnr lnr-map-marker"></i>
-                                        <h4>@Model.Address</h4>
+                                        <h4>@Model.User.Address</h4>
                                         <span class="lm-info-block-value"></span>
                                         <span class="lm-info-block-text"></span>
                                     </div>
 
                                     <div class="lm-info-block gray-default">
                                         <i class="lnr lnr-phone-handset"></i>
-                                        <h4>@Model.PhoneNo</h4>
+                                        <h4>@Model.User.PhoneNo</h4>
                                         <span class="lm-info-block-value"></span>
                                         <span class="lm-info-block-text"></span>
                                     </div>
 
                                     <div class="lm-info-block gray-default">
                                         <i class="lnr lnr-envelope"></i>
-                                        <h4><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="dfbeb3baa79fbaa7beb2afb3baf1bcb0b2">@Model.Email</a></h4>
+                                        <h4><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="dfbeb3baa79fbaa7beb2afb3baf1bcb0b2">@Model.User.Email</a></h4>
                                         <span class="lm-info-block-value"></span>
                                         <span class="lm-info-block-text"></span>
                                     </div>

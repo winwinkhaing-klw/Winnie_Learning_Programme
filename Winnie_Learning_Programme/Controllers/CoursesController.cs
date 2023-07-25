@@ -41,10 +41,10 @@ namespace Winnie_Learning_Programme.Controllers
         public ActionResult CourseDetail(int id)
         {
             var viewModel = new CoursesViewModel();
-            Students student = StudentServices.GetStudentById(id);
-            if(student != null)
+            Courses course = CourseServices.GetCourseById(id);
+            if(course != null)
             {
-                viewModel.Student = student;
+                viewModel.Course = course;
             }
             return View(viewModel);
         }

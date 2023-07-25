@@ -9,6 +9,17 @@ namespace Winnie_Learning_Programme.Models
 {
     public class UserViewModel 
     {
+        public User User { get; set; }
+        public List<Skills> MySkills { get; set; }
+        public List<Education> MyEducation { get; set; }
+        public List<Experience> MyExperiences { get; set; }
+
+        public List<Certificates> MyCertificates { get; set; }
+        public List<string> Knowledges { get; set; }
+    }
+
+    public class User
+    {
         public string Name { get; set; }
 
         [Numeric]
@@ -22,12 +33,7 @@ namespace Winnie_Learning_Programme.Models
         public string Nationality { get; set; }
         public string AboutMe { get; set; }
         public string SkillRate { get; set; }
-        public List<Skills> MySkills { get; set; }
-        public List<Education> MyEducation { get; set; }
-        public List<Experience> MyExperiences { get; set; }
-
-        public List<Certificates> MyCertificates { get; set; }
-        public List<string> Knowledges { get; set; }
+        public string UserRole { get; set; }
     }
 
     public class Education
@@ -61,6 +67,7 @@ namespace Winnie_Learning_Programme.Models
 
         public string SkillCategory { get; set; }
         public int Rate { get; set; }
+        public string RateValue { get; set; }
     }
 
     public class Certificates 

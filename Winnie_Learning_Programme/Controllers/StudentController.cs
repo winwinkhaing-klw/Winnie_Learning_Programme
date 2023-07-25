@@ -30,5 +30,12 @@ namespace Winnie_Learning_Programme.Controllers
             }
             
         }
+
+        public ActionResult StudentDetails(int id)
+        {
+            CoursesViewModel viewModel = new CoursesViewModel();
+            viewModel.Student = StudentServices.GetStudentById(id);
+            return View(viewModel);
+        }
     }
 }
