@@ -35,6 +35,10 @@ namespace Winnie_Learning_Programme.Controllers
         {
             CoursesViewModel viewModel = new CoursesViewModel();
             viewModel.Student = StudentServices.GetStudentById(id);
+            if(viewModel.Student != null)
+            {
+                viewModel.Course = CourseServices.GetCourseById(viewModel.Student.CourseId);
+            }
             return View(viewModel);
         }
     }

@@ -14,6 +14,7 @@ namespace Winnie_Learning_Programme.Services
             {
                 new Students  {
                     StudentId = 1,
+                    CourseId = 3,
                     StudentName = "Winnie",
                     Age = 26,
                     Address = "Kalaw",
@@ -37,6 +38,7 @@ namespace Winnie_Learning_Programme.Services
                 },
                 new Students  {
                     StudentId = 2,
+                    CourseId = 2,
                     StudentName = "PPM",
                     Age = 26,
                     Address = "Kalaw",
@@ -60,6 +62,7 @@ namespace Winnie_Learning_Programme.Services
                 },
                 new Students  {
                     StudentId = 3,
+                    CourseId = 4,
                     StudentName = "Clari",
                     Age = 26,
                     Address = "Yangon",
@@ -83,6 +86,7 @@ namespace Winnie_Learning_Programme.Services
                 },
                 new Students  {
                     StudentId = 4,
+                    CourseId = 6,
                     StudentName = "Bob",
                     Age = 26,
                     Address = "Taunggyi",
@@ -106,6 +110,7 @@ namespace Winnie_Learning_Programme.Services
                 },
                 new Students  {
                     StudentId = 5,
+                    CourseId = 1,
                     StudentName = "Joe",
                     Age = 26,
                     Address = "Mdy",
