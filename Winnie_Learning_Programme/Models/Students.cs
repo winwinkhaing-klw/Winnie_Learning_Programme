@@ -17,6 +17,7 @@ namespace Winnie_Learning_Programme.Models
         public int Age { get; set; }
         public string Major { get; set; }
         public string ImgUrl { get; set; }
+        public Courses Course { get; set; }
     }
     public class SocialLink
     {

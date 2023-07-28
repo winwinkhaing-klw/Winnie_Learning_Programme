@@ -41,5 +41,36 @@ namespace Winnie_Learning_Programme.Controllers
             }
             return View(viewModel);
         }
+
+        public ActionResult StudentList()
+        {
+            CoursesViewModel viewModel = new CoursesViewModel();
+            List<Students> students = new List<Students>();
+            if(GetAllStudents().Count > 0)
+            {
+                foreach (var stu in GetAllStudents())
+                {
+                    if (stu.CourseId != 0)
+                    {
+                        Courses course = CourseServices.GetCourseById(stu.CourseId);
+                        if (course != null)
+                        {
+                            stu.Course = course;
+                        }
+                        students.Add(stu);
+                    }
+
+                }
+                if (students.Count > 0)
+                {
+                    viewModel.Students = students;
+                }
+                else
+                {
+                    viewModel.Students = GetAllStudents();
+                }
+            }
+            return View(viewModel);
+        }
     }
 }

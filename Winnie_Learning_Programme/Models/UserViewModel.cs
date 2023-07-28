@@ -16,6 +16,7 @@ namespace Winnie_Learning_Programme.Models
 
         public List<Certificates> MyCertificates { get; set; }
         public List<string> Knowledges { get; set; }
+        public MailModel Mail { get; set; }
     }
 
     public class User

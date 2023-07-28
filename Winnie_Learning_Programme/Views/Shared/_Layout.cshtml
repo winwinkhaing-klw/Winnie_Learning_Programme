@@ -20,9 +20,10 @@
 @if (!Request.Url.ToString().Contains("Portfolio"))
 {
     @Html.Partial("_NavBar")
+
+    @RenderBody()
 }
 
-@RenderBody()
 @Html.Partial("_footer")
 
 @Scripts.Render("~/bundles/jquery")

@@ -18,17 +18,17 @@ namespace Winnie_Learning_Programme.Controllers
 
 
         [HttpPost]
-        public JsonResult SendMail(MailModel model)
+        public ActionResult SendMail(MailModel model)
         {
-            if (model != null)
+            if (model != null && !string.IsNullOrEmpty(model.From))
             {
                 if (MailService.SendMail(model))
                 {
-                    return Json(true, JsonRequestBehavior.AllowGet);
+                    return Json(new { success = true, message = "We sent your message to our service team."});
                 }
             }
 
-            return Json(false, JsonRequestBehavior.AllowGet);
+            return Json(new { success = false, message = "Failed to send your message." });
         }
     }
 }
