@@ -1,7 +1,9 @@
 ﻿using Microsoft.Graph.Ediscovery;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
+using System.Web.Configuration;
 using System.Web.Mvc;
 using Winnie_Learning_Programme.Models;
 using Winnie_Learning_Programme.Services;
@@ -10,13 +12,21 @@ namespace Winnie_Learning_Programme.Controllers
 {
     public class HomeController : Controller
     {
+        private UserService userService;
+        private CourseServices courseService;
+        public HomeController()
+        {
+            userService = new UserService(new WKDbEntities());
+            courseService = new CourseServices(new WKDbEntities());
+        }
+
         public ActionResult Index()
         {
             CoursesViewModel viewModel = new CoursesViewModel();
 
-            if (CourseServices.GetCourses().Count > 0)
+            if (courseService.GetCourses().Count > 0)
             {
-                viewModel.Courses = CourseServices.GetCourses().OrderBy(x => x.Name).ToList();
+                viewModel.Courses = courseService.GetCourses().OrderBy(x => x.CourseName).ToList();
             }
 
             if (StudentServices.GetStudents().Count > 0)
@@ -29,64 +39,27 @@ namespace Winnie_Learning_Programme.Controllers
         public ActionResult Portfolio()
         {
             UserViewModel viewModel = new UserViewModel();
-            if (UserService.GetMyInfo() != null)
+            if (userService.GetMyInfo() != null)
             {
-                viewModel.User = UserService.GetMyInfo();
+                viewModel.User = userService.GetMyInfo();
             }
-            if (UserService.GetMyEducation() != null)
+            if (userService.GetMyEducation().Count > 0)
             {
-                viewModel.MyEducation = UserService.GetMyEducation();
+                viewModel.MyEducation = userService.GetMyEducation();
             }
-            if (UserService.GetMyCertificates() != null)
+            if (userService.GetMyCertificates().Count > 0)
             {
-                viewModel.MyCertificates = UserService.GetMyCertificates();
+                viewModel.MyCertificates = userService.GetMyCertificates();
             }
-            if (UserService.GetMySkills() != null)
+            if (userService.GetMySkills().Count > 0)
             {
-                List<Skills> skills = new List<Skills>();
-                foreach (var skill in UserService.GetMySkills())
-                {
-                    switch (skill.Rate)
-                    {
-                        case 90:
-                            skill.RateValue = "skill-1";
-                            break;
-                        case 65:
-                            skill.RateValue = "skill-2";
-                            break;
-                        case 80:
-                            skill.RateValue = "skill-3";
-                            break;
-                        case 95:
-                            skill.RateValue = "skill-5";
-                            break;
-                        case 85:
-                            skill.RateValue = "skill-6";
-                            break;
-                        case 100:
-                            skill.RateValue = "skill-7";
-                            break;
-                    }
-                    skills.Add(skill);
-                }
-                viewModel.MySkills = skills.Count > 0 ? skills : UserService.GetMySkills();
+                viewModel.MySkills = userService.GetMySkills();
             }
-            if (UserService.GetMyExperience() != null)
+            if (userService.GetMyExperience().Count > 0)
             {
-                viewModel.MyExperiences = UserService.GetMyExperience();
+                viewModel.MyExperiences = userService.GetMyExperience();
             }
-
-            List<string> knowledge = new List<string>()
-            {
-                "Problem Solving",
-                "Communication",
-                "Troubleshooting and Fixing",
-                "Software Documentation",
-                "Time Management",
-                "Flexibility",
-                "Social Networking"
-            };
-            viewModel.Knowledges = knowledge;
+             viewModel.Knowledges = userService.GetMyKnowledge();
             return View(viewModel);
         }
 

@@ -11,8 +11,8 @@ namespace Winnie_Learning_Programme.Models
 
         public Students Student { get; set; }
 
-        public Courses Course { get; set; }
+        public Course Course { get; set; }
 
-        public List<Courses> Courses { get; set; }
+        public List<Course> Courses { get; set; }
     }
 }

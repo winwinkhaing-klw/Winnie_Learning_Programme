@@ -86,6 +86,7 @@
     <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.6.0.0\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
     </Reference>
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
@@ -211,18 +212,47 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Certificate.cs">
+      <DependentUpon>LearningProgramDBModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MailController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\CoursesController.cs" />
     <Compile Include="Controllers\StudentController.cs" />
+    <Compile Include="Course.cs">
+      <DependentUpon>LearningProgramDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Education.cs">
+      <DependentUpon>LearningProgramDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Experience.cs">
+      <DependentUpon>LearningProgramDBModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="LearningProgramDBModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LearningProgramDBModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LearningProgramDBModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LearningProgramDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LearningProgramDBModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LearningProgramDBModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Mail.cs">
+      <DependentUpon>LearningProgramDBModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Constant.cs" />
-    <Compile Include="Models\Courses.cs" />
     <Compile Include="Models\CoursesViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\MailModel.cs" />
@@ -230,12 +260,21 @@
     <Compile Include="Models\Movie.cs" />
     <Compile Include="Models\Students.cs" />
     <Compile Include="Models\UserViewModel.cs" />
+    <Compile Include="Project.cs">
+      <DependentUpon>LearningProgramDBModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\CourseServices.cs" />
     <Compile Include="Services\MailServices.cs" />
     <Compile Include="Services\StudentServices.cs" />
     <Compile Include="Services\UserService.cs" />
+    <Compile Include="Skill.cs">
+      <DependentUpon>LearningProgramDBModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Startup.cs" />
+    <Compile Include="User.cs">
+      <DependentUpon>LearningProgramDBModel.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\animations.css" />
@@ -2389,6 +2428,16 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="LearningProgramDBModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>LearningProgramDBModel.edmx</DependentUpon>
+      <LastGenOutput>LearningProgramDBModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="LearningProgramDBModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>LearningProgramDBModel.edmx</DependentUpon>
+      <LastGenOutput>LearningProgramDBModel.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\animating.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -2459,6 +2508,13 @@
     <Content Include="Content\assets\fonts\slick.eot" />
     <Content Include="Content\assets\fonts\slick.ttf" />
     <Content Include="Content\assets\fonts\slick.woff" />
+    <EntityDeploy Include="LearningProgramDBModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>LearningProgramDBModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="LearningProgramDBModel.edmx.diagram">
+      <DependentUpon>LearningProgramDBModel.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\custom.js" />
     <Content Include="Scripts\jquery-2.1.3.min.js" />
@@ -2523,10 +2579,7 @@
     <Content Include="Views\Student\StudentDetails.cshtml" />
     <Content Include="Views\Home\Portfolio.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Views\Mailer\" />
-    <Folder Include="Views\Mail\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -2539,6 +2592,9 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

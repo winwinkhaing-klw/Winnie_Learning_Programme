@@ -10,6 +10,11 @@ namespace Winnie_Learning_Programme.Controllers
 {
     public class StudentController : Controller
     {
+        private CourseServices courseService;
+        public StudentController()
+        {
+            courseService = new CourseServices(new WKDbEntities());
+        }
         // GET: Student
         public ActionResult Index()
         {
@@ -37,7 +42,7 @@ namespace Winnie_Learning_Programme.Controllers
             viewModel.Student = StudentServices.GetStudentById(id);
             if(viewModel.Student != null)
             {
-                viewModel.Course = CourseServices.GetCourseById(viewModel.Student.CourseId);
+                viewModel.Course = courseService.GetCourseById(viewModel.Student.CourseId);
             }
             return View(viewModel);
         }
@@ -52,7 +57,7 @@ namespace Winnie_Learning_Programme.Controllers
                 {
                     if (stu.CourseId != 0)
                     {
-                        Courses course = CourseServices.GetCourseById(stu.CourseId);
+                        Course course = courseService.GetCourseById(stu.CourseId);
                         if (course != null)
                         {
                             stu.Course = course;

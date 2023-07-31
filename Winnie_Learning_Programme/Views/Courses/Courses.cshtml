@@ -42,15 +42,15 @@
                             <div class="thumb">
                                 <div class="hover-content">
                                     <ul>
-                                        <li><a href="@Url.Action("CourseDetail","Courses", new { id = course.Id })"><i class="fa fa-eye"></i></a></li>
-                                        <li><a href="@Url.Action("CourseDetail","Courses", new { id = course.Id })"><i class="fa fa-star"></i></a></li>
-                                        <li><a href="@Url.Action("CourseDetail","Courses", new { id = course.Id })"><i class="fa fa-shopping-cart"></i></a></li>
+                                        <li><a href="@Url.Action("CourseDetail","Courses", new { id = course.CourseId })"><i class="fa fa-eye"></i></a></li>
+                                        <li><a href="@Url.Action("CourseDetail","Courses", new { id = course.CourseId })"><i class="fa fa-star"></i></a></li>
+                                        <li><a href="@Url.Action("CourseDetail","Courses", new { id = course.CourseId })"><i class="fa fa-shopping-cart"></i></a></li>
                                     </ul>
                                 </div>
                                 <img src="@course.Url" alt="">
                             </div>
                             <div class="down-content">
-                                <h4>@course.Name</h4>
+                                <h4>@course.CourseName</h4>
                                 <span>$@course.Price.00</span>
                                 <ul class="stars">
                                     @for (int i = 0; i < 5; i++)
