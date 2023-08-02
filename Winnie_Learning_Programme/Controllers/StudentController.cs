@@ -11,9 +11,11 @@ namespace Winnie_Learning_Programme.Controllers
     public class StudentController : Controller
     {
         private CourseServices courseService;
+        private StudentServices stuService;
         public StudentController()
         {
             courseService = new CourseServices(new WKDbEntities());
+            stuService = new StudentServices(new WKDbEntities());
         }
         // GET: Student
         public ActionResult Index()
@@ -23,15 +25,15 @@ namespace Winnie_Learning_Programme.Controllers
             return View(viewModel);
         }
 
-        private List<Students> GetAllStudents()
+        private List<Student> GetAllStudents()
         {
-            if(StudentServices.GetStudents().Count > 0)
+            if(stuService.GetStudents().Count > 0)
             {
-                return StudentServices.GetStudents();
+                return stuService.GetStudents();
             }
             else
             {
-                return new List<Students>();
+                return new List<Student>();
             }
             
         }
@@ -39,7 +41,7 @@ namespace Winnie_Learning_Programme.Controllers
         public ActionResult StudentDetails(int id)
         {
             CoursesViewModel viewModel = new CoursesViewModel();
-            viewModel.Student = StudentServices.GetStudentById(id);
+            viewModel.Student = stuService.GetStudentById(id);
             if(viewModel.Student != null)
             {
                 viewModel.Course = courseService.GetCourseById(viewModel.Student.CourseId);
@@ -50,30 +52,9 @@ namespace Winnie_Learning_Programme.Controllers
         public ActionResult StudentList()
         {
             CoursesViewModel viewModel = new CoursesViewModel();
-            List<Students> students = new List<Students>();
             if(GetAllStudents().Count > 0)
             {
-                foreach (var stu in GetAllStudents())
-                {
-                    if (stu.CourseId != 0)
-                    {
-                        Course course = courseService.GetCourseById(stu.CourseId);
-                        if (course != null)
-                        {
-                            stu.Course = course;
-                        }
-                        students.Add(stu);
-                    }
-
-                }
-                if (students.Count > 0)
-                {
-                    viewModel.Students = students;
-                }
-                else
-                {
-                    viewModel.Students = GetAllStudents();
-                }
+                viewModel.Students = GetAllStudents();
             }
             return View(viewModel);
         }

@@ -14,10 +14,12 @@ namespace Winnie_Learning_Programme.Controllers
     {
         private UserService userService;
         private CourseServices courseService;
+        private StudentServices stuService;
         public HomeController()
         {
             userService = new UserService(new WKDbEntities());
             courseService = new CourseServices(new WKDbEntities());
+            stuService = new StudentServices(new WKDbEntities());
         }
 
         public ActionResult Index()
@@ -29,9 +31,9 @@ namespace Winnie_Learning_Programme.Controllers
                 viewModel.Courses = courseService.GetCourses().OrderBy(x => x.CourseName).ToList();
             }
 
-            if (StudentServices.GetStudents().Count > 0)
+            if (stuService.GetStudents().Count > 0)
             {
-                viewModel.Students = StudentServices.GetStudents().OrderBy(x => x.StudentId).ToList();
+                viewModel.Students = stuService.GetStudents().OrderBy(x => x.StudentId).GroupBy(x=>x.UserId).Select(x=>x.First()).ToList();
             }
             return View(viewModel);
         }
@@ -73,9 +75,9 @@ namespace Winnie_Learning_Programme.Controllers
         public ActionResult About()
         {
             CoursesViewModel viewModel = new CoursesViewModel();
-            if (StudentServices.GetStudents().Count > 0)
+            if (stuService.GetStudents().Count > 0)
             {
-                viewModel.Students = StudentServices.GetStudents().OrderBy(x => x.StudentId).ToList();
+                viewModel.Students = stuService.GetStudents().OrderBy(x => x.StudentId).GroupBy(x=>x.UserId).Select(x=>x.First()).ToList();
             }
             return View(viewModel);
         }

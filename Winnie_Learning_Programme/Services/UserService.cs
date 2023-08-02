@@ -15,9 +15,13 @@ namespace Winnie_Learning_Programme.Services
             _context = context;
         }
 
-        public User GetUser(int id)
+        public User GetUserByUserId(int id)
         {
             return _context.Users.FirstOrDefault(p => p.UserId == id);
+        }
+        public User GetUserByUserRole(string role)
+        {
+            return _context.Users.FirstOrDefault(p => p.UserRole == role);
         }
 
         public User GetMyInfo()

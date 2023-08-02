@@ -7,17 +7,3 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System.Linq;
-using Winnie_Learning_Programme;
-
-public class LearningProgramDBModel
-{
-    public WKDbEntities _context;
-
-    public LearningProgramDBModel(WKDbEntities context)
-    {
-        _context = context;
-    }
-
-    // Add other CRUD operations as needed
-}

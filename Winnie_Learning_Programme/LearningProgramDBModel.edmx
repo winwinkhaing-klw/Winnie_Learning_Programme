@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="WKDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="WKDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Certificate">
           <Key>
             <PropertyRef Name="CertId" />
@@ -81,6 +81,18 @@
           <Property Name="SkillName" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="SkillCategory" Type="nvarchar" MaxLength="100" />
           <Property Name="Rate" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="RateValue" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Student">
+          <Key>
+            <PropertyRef Name="StudentId" />
+          </Key>
+          <Property Name="StudentId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="Major" Type="nvarchar" MaxLength="100" />
+          <Property Name="CourseId" Type="int" Nullable="false" />
+          <Property Name="SocialName" Type="nvarchar" MaxLength="100" />
+          <Property Name="SocialLink" Type="nvarchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -88,15 +100,29 @@
           </Key>
           <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="varchar" MaxLength="50" />
+          <Property Name="Password" Type="nvarchar" MaxLength="100" />
           <Property Name="Birthdate" Type="datetime" />
           <Property Name="Address" Type="nvarchar" MaxLength="100" />
           <Property Name="JobTitle" Type="nvarchar" MaxLength="100" />
           <Property Name="Email" Type="nvarchar" MaxLength="100" />
           <Property Name="PhoneNo" Type="numeric" Precision="18" Scale="0" Nullable="false" />
           <Property Name="Nationality" Type="nvarchar" MaxLength="100" />
-          <Property Name="About" Type="nvarchar" MaxLength="100" />
+          <Property Name="About" Type="nvarchar(max)" />
           <Property Name="UserRole" Type="nvarchar" MaxLength="100" />
+          <Property Name="ImgUrl" Type="nvarchar" MaxLength="100" />
         </EntityType>
+        <Association Name="FK_Certificate_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Certificate" Type="Self.Certificate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Certificate">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Project_Project">
           <End Role="User" Type="Self.User" Multiplicity="0..1" />
           <End Role="Project" Type="Self.Project" Multiplicity="*" />
@@ -106,6 +132,18 @@
             </Principal>
             <Dependent Role="Project">
               <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Student_Course">
+          <End Role="Course" Type="Self.Course" Multiplicity="1" />
+          <End Role="Student" Type="Self.Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Course">
+              <PropertyRef Name="CourseId" />
+            </Principal>
+            <Dependent Role="Student">
+              <PropertyRef Name="CourseId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -141,10 +179,19 @@
           <EntitySet Name="Mail" EntityType="Self.Mail" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Project" EntityType="Self.Project" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Skill" EntityType="Self.Skill" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Student" EntityType="Self.Student" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Certificate_User" Association="Self.FK_Certificate_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Certificate" EntitySet="Certificate" />
+          </AssociationSet>
           <AssociationSet Name="FK_Project_Project" Association="Self.FK_Project_Project">
             <End Role="User" EntitySet="User" />
             <End Role="Project" EntitySet="Project" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Student_Course" Association="Self.FK_Student_Course">
+            <End Role="Course" EntitySet="Course" />
+            <End Role="Student" EntitySet="Student" />
           </AssociationSet>
           <AssociationSet Name="FK_User" Association="Self.FK_User">
             <End Role="User" EntitySet="User" />
@@ -155,8 +202,7 @@
             <End Role="Education" EntitySet="Education" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="WKDbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -170,6 +216,7 @@
           <Property Name="OrgName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="Url" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="CertForm" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="WKDbModel.FK_Certificate_User" FromRole="Certificate" ToRole="User" />
         </EntityType>
         <EntityType Name="Course">
           <Key>
@@ -182,6 +229,7 @@
           <Property Name="Url" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="Price" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="Category" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Students" Relationship="WKDbModel.FK_Student_Course" FromRole="Course" ToRole="Student" />
         </EntityType>
         <EntityType Name="Education">
           <Key>
@@ -239,6 +287,7 @@
           <Property Name="SkillName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="SkillCategory" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="Rate" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="RateValue" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -252,11 +301,15 @@
           <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="PhoneNo" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
           <Property Name="Nationality" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="About" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="About" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="UserRole" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Educations" Relationship="Self.FK_UserId" FromRole="User" ToRole="Education" />
           <NavigationProperty Name="Experiences" Relationship="Self.FK_User" FromRole="User" ToRole="Experience" />
           <NavigationProperty Name="Projects" Relationship="Self.FK_Project_Project" FromRole="User" ToRole="Project" />
+          <NavigationProperty Name="Certificates" Relationship="WKDbModel.FK_Certificate_User" FromRole="User" ToRole="Certificate" />
+          <NavigationProperty Name="Students" Relationship="WKDbModel.FK_Student_User1" FromRole="User" ToRole="Student" />
+          <Property Name="ImgUrl" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
         </EntityType>
         <Association Name="FK_UserId">
           <End Role="User" Type="Self.User" Multiplicity="1" />
@@ -315,7 +368,69 @@
             <End Role="User" EntitySet="Users" />
             <End Role="Project" EntitySet="Projects" />
           </AssociationSet>
+          <EntitySet Name="Students" EntityType="WKDbModel.Student" />
+          <AssociationSet Name="FK_Certificate_User" Association="WKDbModel.FK_Certificate_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Certificate" EntitySet="Certificates" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Student_User1" Association="WKDbModel.FK_Student_User1">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Student" EntitySet="Students" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Student_Course" Association="WKDbModel.FK_Student_Course">
+            <End Role="Course" EntitySet="Courses" />
+            <End Role="Student" EntitySet="Students" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="Student">
+          <Key>
+            <PropertyRef Name="StudentId" />
+          </Key>
+          <Property Name="StudentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="Major" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CourseId" Type="Int32" Nullable="false" />
+          <Property Name="SocialName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="SocialLink" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="User" Relationship="WKDbModel.FK_Student_User1" FromRole="Student" ToRole="User" />
+          <NavigationProperty Name="Course" Relationship="WKDbModel.FK_Student_Course" FromRole="Student" ToRole="Course" />
+        </EntityType>
+        <Association Name="FK_Certificate_User">
+          <End Type="WKDbModel.User" Role="User" Multiplicity="1" />
+          <End Type="WKDbModel.Certificate" Role="Certificate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Certificate">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Student_User1">
+          <End Type="WKDbModel.User" Role="User" Multiplicity="1" />
+          <End Type="WKDbModel.Student" Role="Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Student">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Student_Course">
+          <End Type="WKDbModel.Course" Role="Course" Multiplicity="1" />
+          <End Type="WKDbModel.Student" Role="Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Course">
+              <PropertyRef Name="CourseId" />
+            </Principal>
+            <Dependent Role="Student">
+              <PropertyRef Name="CourseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -398,6 +513,7 @@
           <EntitySetMapping Name="Skills">
             <EntityTypeMapping TypeName="WKDbModel.Skill">
               <MappingFragment StoreEntitySet="Skill">
+                <ScalarProperty Name="RateValue" ColumnName="RateValue" />
                 <ScalarProperty Name="SkillId" ColumnName="SkillId" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="SkillName" ColumnName="SkillName" />
@@ -409,6 +525,8 @@
           <EntitySetMapping Name="Users">
             <EntityTypeMapping TypeName="WKDbModel.User">
               <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="ImgUrl" ColumnName="ImgUrl" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Birthdate" ColumnName="Birthdate" />
@@ -419,6 +537,18 @@
                 <ScalarProperty Name="Nationality" ColumnName="Nationality" />
                 <ScalarProperty Name="About" ColumnName="About" />
                 <ScalarProperty Name="UserRole" ColumnName="UserRole" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Students">
+            <EntityTypeMapping TypeName="WKDbModel.Student">
+              <MappingFragment StoreEntitySet="Student">
+                <ScalarProperty Name="SocialLink" ColumnName="SocialLink" />
+                <ScalarProperty Name="SocialName" ColumnName="SocialName" />
+                <ScalarProperty Name="CourseId" ColumnName="CourseId" />
+                <ScalarProperty Name="Major" ColumnName="Major" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="StudentId" ColumnName="StudentId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

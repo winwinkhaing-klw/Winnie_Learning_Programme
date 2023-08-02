@@ -20,6 +20,8 @@ namespace Winnie_Learning_Programme
             this.Educations = new HashSet<Education>();
             this.Experiences = new HashSet<Experience>();
             this.Projects = new HashSet<Project>();
+            this.Certificates = new HashSet<Certificate>();
+            this.Students = new HashSet<Student>();
         }
     
         public int UserId { get; set; }
@@ -32,6 +34,8 @@ namespace Winnie_Learning_Programme
         public string Nationality { get; set; }
         public string About { get; set; }
         public string UserRole { get; set; }
+        public string ImgUrl { get; set; }
+        public string Password { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Education> Educations { get; set; }
@@ -39,5 +43,9 @@ namespace Winnie_Learning_Programme
         public virtual ICollection<Experience> Experiences { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Project> Projects { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Certificate> Certificates { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Student> Students { get; set; }
     }
 }

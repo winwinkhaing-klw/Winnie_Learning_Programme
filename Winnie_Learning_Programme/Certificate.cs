@@ -20,5 +20,7 @@ namespace Winnie_Learning_Programme
         public string OrgName { get; set; }
         public string Url { get; set; }
         public string CertForm { get; set; }
+    
+        public virtual User User { get; set; }
     }
 }

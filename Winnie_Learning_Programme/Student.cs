@@ -12,13 +12,16 @@ namespace Winnie_Learning_Programme
     using System;
     using System.Collections.Generic;
     
-    public partial class Skill
+    public partial class Student
     {
-        public int SkillId { get; set; }
+        public int StudentId { get; set; }
         public int UserId { get; set; }
-        public string SkillName { get; set; }
-        public string SkillCategory { get; set; }
-        public Nullable<decimal> Rate { get; set; }
-        public string RateValue { get; set; }
+        public string Major { get; set; }
+        public int CourseId { get; set; }
+        public string SocialName { get; set; }
+        public string SocialLink { get; set; }
+    
+        public virtual User User { get; set; }
+        public virtual Course Course { get; set; }
     }
 }

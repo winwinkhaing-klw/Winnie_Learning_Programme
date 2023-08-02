@@ -7,9 +7,9 @@ namespace Winnie_Learning_Programme.Models
 {
     public class CoursesViewModel
     {
-        public List<Students> Students { get; set; }
+        public List<Student> Students { get; set; }
 
-        public Students Student { get; set; }
+        public Student Student { get; set; }
 
         public Course Course { get; set; }
 

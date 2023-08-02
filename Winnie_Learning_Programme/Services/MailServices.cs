@@ -10,19 +10,25 @@ namespace Winnie_Learning_Programme.Services
 {
     public class MailService
     {
-        public static bool SendMail(MailModel model)
+        private Winnie_Learning_Programme.WKDbEntities _context;
+        public MailService(WKDbEntities context)
+        {
+            _context = context;
+        }
+        public bool SendMail(Mail model)
         {
             System.Net.ServicePointManager.SecurityProtocol = System.Net.SecurityProtocolType.Tls12;
             MailMessage mail = new MailMessage();
-            model.To = "wwk773@gmail.com";
-            mail.To.Add(model.To);
-            mail.From = new MailAddress(model.From);
+            mail.To.Add(model.ReceiverMail);
+            mail.From = new MailAddress(model.SenderMail);
             mail.Subject = model.Subject;
             mail.Body = model.Body;
             mail.IsBodyHtml = true;
             SmtpClient smtpClient = new SmtpClient("localhost", 25);
             mail.BodyEncoding = System.Text.Encoding.UTF8;
             smtpClient.Send(mail);
+            _context.Mails.Add(model);
+            _context.SaveChanges();
             //SmtpClient smtpClient = new SmtpClient("smtp.gmail.com", 587);
             //smtpClient.EnableSsl = true;
             //smtpClient.Credentials = new NetworkCredential("wwk773@gmail.com", "@Wwkwwk18");

@@ -13,6 +13,12 @@ namespace Winnie_Learning_Programme.Models
             public static string Mine = "My Course";
             public static string Fav = "Favourite Course";
         }
-        
+
+        public static class UserRole
+        {
+            public static string Admin = "Admin";
+
+            public static string Student = "Student";
+        }
     }
 }

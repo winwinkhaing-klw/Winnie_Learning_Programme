@@ -355,12 +355,12 @@
                         <div class="thumb">
                             <div class="icon">
                                 <a href="@Url.Action("StudentDetails","Student", new { id = stu.StudentId })">
-                                    <h6>@stu.StudentName</h6>
+                                    <h6>@stu.User.Name</h6>
                                     <i class="fa fa-user"></i>
                                 </a>
                             </div>
-                            <img src="@stu.ImgUrl" alt="">
-                            <span>@stu.StudentName</span>
+                            <img src="@stu.User.ImgUrl" alt="">
+                            <span>@stu.User.Name</span>
                         </div>
                     </div>
                 }

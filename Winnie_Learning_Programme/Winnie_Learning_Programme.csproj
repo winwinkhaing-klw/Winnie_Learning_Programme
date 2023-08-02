@@ -258,7 +258,7 @@
     <Compile Include="Models\MailModel.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Movie.cs" />
-    <Compile Include="Models\Students.cs" />
+    <Compile Include="Models\Student.cs" />
     <Compile Include="Models\UserViewModel.cs" />
     <Compile Include="Project.cs">
       <DependentUpon>LearningProgramDBModel.tt</DependentUpon>
@@ -272,6 +272,9 @@
       <DependentUpon>LearningProgramDBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Startup.cs" />
+    <Compile Include="Student.cs">
+      <DependentUpon>LearningProgramDBModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="User.cs">
       <DependentUpon>LearningProgramDBModel.tt</DependentUpon>
     </Compile>
@@ -289,6 +292,7 @@
     <Content Include="Content\assets\fonts\slick.svg" />
     <Content Include="Content\assets\images\about-left-image.jpg" />
     <Content Include="Content\assets\images\about-us-page-heading.jpg" />
+    <Content Include="Content\assets\images\background.jpg" />
     <Content Include="Content\assets\images\baner-right-image-01.jpg" />
     <Content Include="Content\assets\images\baner-right-image-02.jpg" />
     <Content Include="Content\assets\images\baner-right-image-03.jpg" />
@@ -336,6 +340,13 @@
     <Content Include="Content\assets\images\service-03.jpg" />
     <Content Include="Content\assets\images\single-product-01.jpg" />
     <Content Include="Content\assets\images\single-product-02.jpg" />
+    <Content Include="Content\assets\images\stu1.jpg" />
+    <Content Include="Content\assets\images\stu2.jpg" />
+    <Content Include="Content\assets\images\stu3.jpg" />
+    <Content Include="Content\assets\images\stu4.jpg" />
+    <Content Include="Content\assets\images\stu5.jpg" />
+    <Content Include="Content\assets\images\stu6.jpg" />
+    <Content Include="Content\assets\images\stu7.jpg" />
     <Content Include="Content\assets\images\team-member-01.jpg" />
     <Content Include="Content\assets\images\team-member-02.jpg" />
     <Content Include="Content\assets\images\team-member-03.jpg" />
