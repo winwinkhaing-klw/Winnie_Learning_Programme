@@ -1,27 +1,4 @@
 
-
-/* ---------------------------------------------
-Table of contents
-------------------------------------------------
-01. font & reset css
-02. reset
-03. global styles
-04. header
-05. banner
-06. features
-07. testimonials
-08. contact
-09. footer
-10. preloader
-11. search
-12. portfolio
-
---------------------------------------------- */
-/* 
----------------------------------------------
-font & reset css
---------------------------------------------- 
-*/
 @import url("https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900");
 /* 
 ---------------------------------------------
@@ -36,6 +13,32 @@ figure, header, nav, section, article, aside, footer, figcaption {
   padding: 0;
   border: 0;
   outline: 0;
+}
+
+.card-registration .select-input.form-control[readonly]:not([disabled]) {
+    font-size: 0.7rem !important;
+    line-height: 2.15;
+    padding-left: .75em;
+    padding-right: .75em;
+}
+
+.formGroup{
+    margin-left:0px!important;
+}
+
+message{
+    margin-bottom:10px;
+}
+
+.formLabel {
+    font-size: 14px;
+}
+.card-registration .select-arrow {
+    top: 13px;
+}
+
+.space{
+    margin-left : 10px;
 }
 
 .clearfix:after {

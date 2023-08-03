@@ -10,28 +10,85 @@
     @Html.AntiForgeryToken()
     <h4>Create a new account.</h4>
     <hr />
-    @Html.ValidationSummary("", new { @class = "text-danger" })
-    <div class="form-group">
-        @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
-        </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
-        </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
-        </div>
-    </div>
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" class="btn btn-default" value="Register" />
+   
+    <div class="container">
+        <div class="row d-flex justify-content-center align-items-center">
+            <div class="col">
+                <div class="card card-registration my-4">
+                    <div class="row g-0">
+                        <div class="col-xl-6 d-none d-xl-block">
+                            <img src="~/Content/assets/images/regist1.jpg"
+                                 alt="Sample photo" class="img-fluid"
+                                 style="border-top-left-radius: .25rem; border-bottom-left-radius: .25rem;" />
+                        </div>
+                        <div class="col-xl-6">
+                            <div class="card-body p-md-3 text-black">
+
+                                <h4 class="mb-3 text-uppercase">
+                                    Registration form
+                                </h4>
+                                <span class="mb-2" id="message" style="color:steelblue;">@ViewBag.message</span>
+                                <div class="row">
+
+                                    <div class="col-md-5 mb-2">
+                                        <div class="form-group formGroup">
+                                            @Html.LabelFor(m => m.FullName, new { @class = "formLabel" })
+                                            @Html.TextBoxFor(m => m.FullName, new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(m => m.FullName, "", new { @class = "text-danger" })
+
+                                        </div>
+                                    </div>
+                                    <div class="col-md-5 mb-2 space">
+                                        <div class="form-group formGroup">
+                                            @Html.LabelFor(m => m.Email, new { @class = "formLabel" })
+                                            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-5 mb-2">
+                                        <div class="form-group formGroup">
+                                            @Html.LabelFor(m => m.BirthDate, new { @class = "formLabel" })
+                                            @Html.TextBoxFor(m => m.BirthDate, new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(m => m.BirthDate, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-5 mb-2 space">
+                                        <div class="form-group formGroup">
+                                            @Html.LabelFor(m => m.Address, new { @class = "formLabel" })
+                                            @Html.TextBoxFor(m => m.Address, new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(m => m.Address, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group col-md-12 formGroup">
+                                        @Html.LabelFor(m => m.Password, new { @class = "formLabel" })
+                                        @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <span style="font-size:12px;">Already Register? Please login with your account.</span>
+                                <hr />
+                                <div class="row">
+                                    <div class="form-group formGroup">
+                                        <div class="col-md-2">
+                                            <a href="@Url.Action("Login","Account")" class="btn btn-link">Login</a>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-md-offset-2 col-md-5">
+                                            <input type="submit" class="btn btn-primary" value="Register" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 }

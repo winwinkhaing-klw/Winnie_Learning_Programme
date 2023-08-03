@@ -9,10 +9,12 @@ namespace Winnie_Learning_Programme.Services
     public class UserService
     {
         private WKDbEntities _context;
+        private PasswordHasher pwdHasher;
 
         public UserService(WKDbEntities context)
         {
             _context = context;
+            pwdHasher = new PasswordHasher(new WKDbEntities());
         }
 
         public User GetUserByUserId(int id)
@@ -63,6 +65,33 @@ namespace Winnie_Learning_Programme.Services
             List<string> knws = new List<string>();
             knws = _context.Skills.Where(x => x.SkillCategory == "Personal").Select(x=>x.SkillName).ToList();
             return knws;
+        }
+
+        public int Register(User userData)
+        {
+            User user = new User();
+            int userId = 0;
+            if (userData != null)
+            {
+                _context.Users.Add(userData);
+                _context.SaveChanges();
+                userId = userData.UserId;
+            }
+            return userId;
+        }
+
+        public bool isValidAccount(string email, string password)
+        {
+            User user = _context.Users.Where(x => x.Email == email).FirstOrDefault();
+            if(user != null)
+            {
+                string decryptedPwd = pwdHasher.DecryptPassword(user.Password);
+                if (decryptedPwd == password)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
     }
 }
