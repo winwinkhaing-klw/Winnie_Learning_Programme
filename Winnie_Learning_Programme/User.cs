@@ -36,6 +36,8 @@ namespace Winnie_Learning_Programme
         public string UserRole { get; set; }
         public string ImgUrl { get; set; }
         public string Password { get; set; }
+        public Nullable<System.DateTime> CreatedDate { get; set; }
+        public Nullable<System.DateTime> UpdatedDate { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Education> Educations { get; set; }

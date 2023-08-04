@@ -36,6 +36,10 @@ namespace Winnie_Learning_Programme.Controllers
         }
         public ActionResult YourCourse()
         {
+            if (!AuthenticationHelper.IsAuthenticated())
+            {
+                return RedirectToAction("Index", "Home");
+            }
             var viewModel = new CoursesViewModel();
             if (courseService.GetCourses().Count > 0 && courseService.GetCourses().Any(x => x.Category == Constant.Category.Mine))
             {

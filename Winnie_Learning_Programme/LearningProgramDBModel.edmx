@@ -110,6 +110,8 @@
           <Property Name="About" Type="nvarchar(max)" />
           <Property Name="UserRole" Type="nvarchar" MaxLength="100" />
           <Property Name="ImgUrl" Type="nvarchar" MaxLength="100" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="UpdatedDate" Type="datetime" />
         </EntityType>
         <Association Name="FK_Certificate_User">
           <End Role="User" Type="Self.User" Multiplicity="1" />
@@ -310,6 +312,8 @@
           <NavigationProperty Name="Students" Relationship="WKDbModel.FK_Student_User1" FromRole="User" ToRole="Student" />
           <Property Name="ImgUrl" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
         </EntityType>
         <Association Name="FK_UserId">
           <End Role="User" Type="Self.User" Multiplicity="1" />
@@ -525,6 +529,8 @@
           <EntitySetMapping Name="Users">
             <EntityTypeMapping TypeName="WKDbModel.User">
               <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
                 <ScalarProperty Name="ImgUrl" ColumnName="ImgUrl" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />

@@ -35,11 +35,7 @@ namespace Winnie_Learning_Programme.Services
                         cryptoStream.FlushFinalBlock();
 
                         byte[] encryptedPasswordBytes = encryptedStream.ToArray();
-                        byte[] combinedBytes = new byte[aes.IV.Length + encryptedPasswordBytes.Length];
-                        Array.Copy(aes.IV, 0, combinedBytes, 0, aes.IV.Length);
-                        Array.Copy(encryptedPasswordBytes, 0, combinedBytes, aes.IV.Length, encryptedPasswordBytes.Length);
-
-                        return Convert.ToBase64String(combinedBytes);
+                        return Convert.ToBase64String(encryptedPasswordBytes);
                     }
                 }
             }

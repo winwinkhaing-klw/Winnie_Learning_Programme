@@ -1,29 +1,73 @@
-﻿<header class="header-area header-sticky">
+﻿@using Winnie_Learning_Programme.Services
+@model Winnie_Learning_Programme.Models.CoursesViewModel
+
+<header class="header-area header-sticky">
     <div class="">
         <div class="row">
             <div class="col-12">
                 <nav class="main-nav">
                     <!-- ***** Logo Start ***** -->
                     @*<a href="index.html" class="logo">
-                        <img src="~/Content/assets/images/logo.png" sizes="20">
-                    </a>*@
+            <img src="~/Content/assets/images/logo.png" sizes="20">
+        </a>*@
                     <!-- ***** Logo End ***** -->
                     <!-- ***** Menu Start ***** -->
-                    <div class="col-lg-offset-4"> @Html.Partial("_LoginPartial")</div>
+
                     <ul class="nav">
                         <li class="scroll-to-section"><a href="@Url.Action("Index", "Home")"><span class="glyphicon glyphicon-home"></span> Home</a></li>
 
                         <li class="scroll-to-section"><a href="@Url.Action("Courses","Courses")">All Courses</a></li>
                         <li class="scroll-to-section"><a href="@Url.Action("PopularCourse","Courses")">Popular Courses</a></li>
-                        <li class="scroll-to-section"><a href="@Url.Action("YourCourse","Courses")">Your Courses</a></li>
+                        @if (AuthenticationHelper.IsAuthenticated())
+                        {
+                            <li class="scroll-to-section"><a href="@Url.Action("YourCourse","Courses")">Your Courses</a></li>
+                        }
+
+
                         <li class="submenu">
                             <a href="javascript:;">About Us</a>
                             <ul>
                                 <li><a href="@Url.Action("About","Home")">About Us</a></li>
-                                <li><a href="@Url.Action("Portfolio","Home")">My Portfolio</a></li>
-                                <li><a href="@Url.Action("Contact","Home")">Contact Us</a></li>
-                            </ul>
+                                @if (AuthenticationHelper.IsAuthenticated())
+                                {
+                                    <li><a href="@Url.Action("Portfolio", "Home")">My Portfolio</a></li>
+                                }
+                                    <li><a href="@Url.Action("Contact","Home")">Contact Us</a></li>
+                                </ul>
                         </li>
+                        @if (AuthenticationHelper.IsAuthenticated())
+                        {
+                            <li class="submenu">
+                                <a href="javascript:;">@Model.UserModel.User.Name</a>
+                                <ul>
+                                    <li><a href="#">My Account</a></li>
+                                    <li><a href="#">View Profile</a></li>
+                                    <li><a href="#">Edit Profile</a></li>
+                                    <li><a href="#">Change Password</a></li>
+                                    <li><a href="#">Setting</a></li>
+                                    <li>
+                                        <a href="@Url.Action("Logout", "User")">Logout</a>
+                                    </li>
+                                </ul>
+
+                            </li>
+                        }
+                        else
+                        {
+                            <li>
+                                <a href="@Url.Action("Register", "Account")">
+                                    <span class="glyphicon glyphicon-registration-mark"></span>
+                                    Register
+                                </a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("Login", "Account")">
+                                    <span class="glyphicon glyphicon-log-in"></span>
+                                    Login
+                                </a>
+                            </li>
+                        }
+
                     </ul>
                 </nav>
             </div>

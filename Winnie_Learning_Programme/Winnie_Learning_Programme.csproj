@@ -221,6 +221,7 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\CoursesController.cs" />
     <Compile Include="Controllers\StudentController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Course.cs">
       <DependentUpon>LearningProgramDBModel.tt</DependentUpon>
     </Compile>
@@ -265,6 +266,7 @@
       <DependentUpon>LearningProgramDBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\AuthenticationHelper.cs" />
     <Compile Include="Services\CourseServices.cs" />
     <Compile Include="Services\MailServices.cs" />
     <Compile Include="Services\PasswordHasher.cs" />
@@ -2595,7 +2597,9 @@
     <Content Include="Views\Student\StudentDetails.cshtml" />
     <Content Include="Views\Home\Portfolio.cshtml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Views\User\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

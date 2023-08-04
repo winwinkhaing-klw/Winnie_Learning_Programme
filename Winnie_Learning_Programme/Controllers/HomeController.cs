@@ -30,6 +30,12 @@ namespace Winnie_Learning_Programme.Controllers
             {
                 viewModel.Courses = courseService.GetCourses().OrderBy(x => x.CourseName).ToList();
             }
+            if (Session["Username"] != null){
+                var userName = Session["Username"];
+                User user = userService.GetUserByUserName(userName.ToString());
+                viewModel.UserModel.User = user;
+            }
+            
 
             if (stuService.GetStudents().Count > 0)
             {
@@ -40,7 +46,12 @@ namespace Winnie_Learning_Programme.Controllers
 
         public ActionResult Portfolio()
         {
-            UserViewModel viewModel = new UserViewModel();
+            if (!AuthenticationHelper.IsAuthenticated())
+            {
+                return RedirectToAction("Index");
+            }
+
+                UserViewModel viewModel = new UserViewModel();
             if (userService.GetMyInfo() != null)
             {
                 viewModel.User = userService.GetMyInfo();

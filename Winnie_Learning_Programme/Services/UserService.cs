@@ -21,6 +21,10 @@ namespace Winnie_Learning_Programme.Services
         {
             return _context.Users.FirstOrDefault(p => p.UserId == id);
         }
+        public User GetUserByUserName(string name)
+        {
+            return _context.Users.FirstOrDefault(p => p.Email == name);
+        }
         public User GetUserByUserRole(string role)
         {
             return _context.Users.FirstOrDefault(p => p.UserRole == role);
