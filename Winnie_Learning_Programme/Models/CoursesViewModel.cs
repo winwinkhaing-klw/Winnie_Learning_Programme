@@ -14,6 +14,7 @@ namespace Winnie_Learning_Programme.Models
         public Course Course { get; set; }
 
         public List<Course> Courses { get; set; }
+
         public UserViewModel UserModel { get; set; }
     }
 }

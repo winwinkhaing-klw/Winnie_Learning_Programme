@@ -20,6 +20,7 @@
         <AssociationConnector Association="WKDbModel.FK_Certificate_User" />
         <AssociationConnector Association="WKDbModel.FK_Student_User1" />
         <AssociationConnector Association="WKDbModel.FK_Student_Course" />
+        <EntityTypeShape EntityType="WKDbModel.OTP" Width="1.5" PointX="5.375" PointY="7.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

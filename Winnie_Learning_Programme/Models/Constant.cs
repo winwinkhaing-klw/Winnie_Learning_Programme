@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Configuration;
 
 namespace Winnie_Learning_Programme.Models
 {
@@ -20,5 +21,6 @@ namespace Winnie_Learning_Programme.Models
 
             public static string Student = "Student";
         }
+        public  static string defaultMail = WebConfigurationManager.AppSettings["domain_mail"];
     }
 }

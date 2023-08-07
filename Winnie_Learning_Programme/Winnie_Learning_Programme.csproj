@@ -262,6 +262,9 @@
     <Compile Include="Models\Movie.cs" />
     <Compile Include="Models\Student.cs" />
     <Compile Include="Models\UserViewModel.cs" />
+    <Compile Include="OTP.cs">
+      <DependentUpon>LearningProgramDBModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Project.cs">
       <DependentUpon>LearningProgramDBModel.tt</DependentUpon>
     </Compile>

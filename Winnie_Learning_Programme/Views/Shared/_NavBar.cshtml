@@ -1,5 +1,12 @@
 ﻿@using Winnie_Learning_Programme.Services
-@model Winnie_Learning_Programme.Models.CoursesViewModel
+
+@{ 
+    string name = string.Empty;
+    if (HttpContext.Current.Session["FullName"] != null)
+    {
+        name = HttpContext.Current.Session["FullName"].ToString();
+    }
+}
 
 <header class="header-area header-sticky">
     <div class="">
@@ -38,7 +45,7 @@
                         @if (AuthenticationHelper.IsAuthenticated())
                         {
                             <li class="submenu">
-                                <a href="javascript:;">@Model.UserModel.User.Name</a>
+                                <a href="javascript:;">@name</a>
                                 <ul>
                                     <li><a href="#">My Account</a></li>
                                     <li><a href="#">View Profile</a></li>

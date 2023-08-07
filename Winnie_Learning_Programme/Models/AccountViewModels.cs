@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DataAnnotationsExtensions;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
@@ -117,5 +118,10 @@ namespace Winnie_Learning_Programme.Models
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
+
+        [Required]
+        [Numeric]
+        [Display(Name = "OTP Code")]
+        public int OTP { get; set; }
     }
 }

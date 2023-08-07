@@ -34,5 +34,6 @@ namespace Winnie_Learning_Programme
         public virtual DbSet<Skill> Skills { get; set; }
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<Student> Students { get; set; }
+        public virtual DbSet<OTP> OTPs { get; set; }
     }
 }

@@ -18,6 +18,7 @@ namespace Winnie_Learning_Programme.Controllers
     {
         private UserService userServices;
         private Services.PasswordHasher pwdHasher;
+
         public AccountController()
         {
             userServices = new UserService(new WKDbEntities());
@@ -49,6 +50,8 @@ namespace Winnie_Learning_Programme.Controllers
             if (userServices.isValidAccount(model.Email, model.Password))
             {
                 Session["Username"] = model.Email;
+                User user = userServices.GetUserByUserName(model.Email);
+                Session["FullName"] = user.Name;
                 return RedirectToAction("YourCourse", "Courses");
             }
             else
@@ -102,26 +105,50 @@ namespace Winnie_Learning_Programme.Controllers
             return View();
         }
 
-        //
-        //
         // GET: /Account/ForgotPassword
         [AllowAnonymous]
+        [HttpGet]
         public ActionResult ForgotPassword()
         {
+            ForgotPasswordViewModel model = new ForgotPasswordViewModel();
+            return View(model);
+        }
+
+       // POST: /Account/ForgotPassword
+       [HttpPost]
+       public ActionResult ForgotPassword(ForgotPasswordViewModel model)
+       {
+            if (!string.IsNullOrEmpty(model.Email))
+            {
+                if (userServices.forgetPassword(model.Email)) {
+                    return RedirectToAction("ForgotPasswordConfirmation");
+                }
+            }
             return View();
         }
 
-        //
-        // POST: /Account/ForgotPassword
-       
         // GET: /Account/ForgotPasswordConfirmation
         [AllowAnonymous]
         public ActionResult ForgotPasswordConfirmation()
         {
-            return View();
+            ForgotPasswordViewModel model = new ForgotPasswordViewModel();
+            return View(model);
         }
 
-        //
+        [AllowAnonymous]
+        [HttpPost]
+        public ActionResult ForgotPasswordConfirmation(ForgotPasswordViewModel model)
+        {
+            if (model.OTP != 0)
+            {
+                if (userServices.IsValidateOTP(model.OTP))
+                {
+                    return RedirectToAction("Login");
+                }
+            }
+            ViewBag.message = "Invalid OTP. Please enter correct otp code.";
+            return View(model);
+        }
         // GET: /Account/ResetPassword
         [AllowAnonymous]
         public ActionResult ResetPassword(string code)
